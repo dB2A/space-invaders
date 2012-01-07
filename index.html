@@ -21,11 +21,14 @@
 			}
 			
 			var paper = Raphael("spaceinvader", document.documentElement.clientWidth, document.documentElement.clientHeight - 5);
-			//var s = paper.path(spaceinvaderPath, 0, 0, 55, 40);
-			var s = paper.rect(0,0,110,80);
+			var s = paper.path(spaceinvaderPath);
+			s.attr("width", 550);
+			s.attr("height", 400);
+			//var s = paper.rect(0,0,110,80);
 			s.attr({
-				fill: "#F0F"
+				fill: "#0F0"
 				});
+				console.log(s.attr("width"));
 			s.animate(move(paper.width, paper.height));		
 		});
 	</script>
