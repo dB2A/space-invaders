@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Electronic Basstard - Space Invaders</title>
+	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/raphael-min.js"></script>
+	<script type="text/javascript" src="js/space-invader.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var anim = Raphael.animation({fill: '#FC0', stroke: '#0CF'}, 2e3);
+			var s = Raphael(spaceinvader);
+			s.animate(anim.delay(500));			
+		});
+	</script>
+  </head>
+	<body>
+	</body>
+</html>
+
