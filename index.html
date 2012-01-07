@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -8,13 +8,14 @@
 	<script type="text/javascript" src="js/space-invader.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			var anim = Raphael.animation({fill: '#FC0', stroke: '#0CF'}, 2e3);
 			var s = Raphael(spaceinvader);
-			s.animate(anim.delay(500));			
+			s.stop().animate({fill: '#F00', transform: 'T0,' + (document.documentElement.clientHeight - 400)}, 2e3);			
+			
+			var s2 = Raphael(spaceinvader2);
+			s2.stop().animate({fill: '#0F0', transform: 'T' + (document.documentElement.clientWidth - 550) + ',0'}, 2e3);
 		});
 	</script>
   </head>
 	<body style="background-color: #000">
 	</body>
 </html>
-
