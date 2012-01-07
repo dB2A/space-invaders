@@ -7,15 +7,30 @@
 	<script type="text/javascript" src="js/raphael-min.js"></script>
 	<script type="text/javascript" src="js/space-invader.js"></script>
 	<script type="text/javascript">
-		$(document).ready(function(){
-			var s = Raphael(spaceinvader);
-			s.stop().animate({fill: '#F00', transform: 'T0,' + (document.documentElement.clientHeight - 400)}, 2e3);			
+		$(document).ready(function() {
+			var x = 0;
+			var y = 0;
+			function move(x, y) {
+				return Raphael.animation(
+				{
+					transform:
+						'T' + (x - s.attr("width")) + ',' + (y - s.attr("height"))
+				}, 5000 , 'easeInOut', function() {
+					(x==s.attr("width")) ? s.animate(move(paper.width, paper.height)) : s.animate(move(s.attr("width"),s.attr("height")));
+				});
+			}
 			
-			var s2 = Raphael(spaceinvader2);
-			s2.stop().animate({fill: '#0F0', transform: 'T' + (document.documentElement.clientWidth - 550) + ',0'}, 2e3);
+			var paper = Raphael("spaceinvader", document.documentElement.clientWidth, document.documentElement.clientHeight - 5);
+			//var s = paper.path(spaceinvaderPath, 0, 0, 55, 40);
+			var s = paper.rect(0,0,110,80);
+			s.attr({
+				fill: "#F0F"
+				});
+			s.animate(move(paper.width, paper.height));		
 		});
 	</script>
   </head>
-	<body style="background-color: #000">
+	<body style="background-color: #000; margin: 0; padding: 0;">
+		<div id="spaceinvader"></div>
 	</body>
 </html>
