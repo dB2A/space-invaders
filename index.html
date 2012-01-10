@@ -8,24 +8,40 @@
         <script type="text/javascript" src="js/space-invader.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
-                function move(x, y) {
-                    console.log('T' + (x - s.attr("width")) + ',' + (y - s.attr("height")) + s.attr("transform"));
-                    return Raphael.animation({
-                        transform: 'T' + (x - s.attr("width")) + ',' + (y - s.attr("height"))
-                    }, 5000 , 'easeInOut', function() {
-                        (x==s.attr("width")) ? s.animate(move(paper.width, paper.height)) : s.animate(move(s.attr("width"),s.attr("height")));
+				var anim2 = function() {
+				    return Raphael.animation({
+                        transform: 'T100,100'
+                    }, 1000 , 'easeInOut', function() {
+						s.animate(getNextAnim());
                     });
                 }
+				
+				var anim1 = function() {
+					return Raphael.animation({
+						transform : 't100,100r45t-100,0'
+					}, 1000, 'bounce', function() {
+						s.animate(getNextAnim());
+					});
+				}
 
+				var anims = [
+					anim1,
+					anim2
+				];
+				console.log(anims[0]);
+				function getNextAnim() {
+					return anims[Math.round(Math.random()) * (anims.length - 1)]();
+				}
+				
                 var paper = Raphael("spaceinvader", document.documentElement.clientWidth, document.documentElement.clientHeight - 5);
-                var s = paper.path(spaceinvaderPath).scale(.5, .5, 0, 0);
-                s.attr("width", 550 * s.attr("transform")[0][1]);
-                s.attr("height", 400 * s.attr("transform")[0][2]);
+                var s = paper.path(spaceinvaderPath);
+                s.attr("width", 220);
+                s.attr("height", 160);
                 s.attr({
                     fill: "#0F0"
                 });
-                console.log(s.attr());
-                s.animate(move(paper.width, paper.height));
+                //s.animate(move(paper.width, paper.height));
+				s.animate(getNextAnim());
             });
         </script>
     </head>
