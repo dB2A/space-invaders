@@ -1,39 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Electronic Basstard - Space Invaders</title>
-	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
-	<script type="text/javascript" src="js/raphael-min.js"></script>
-	<script type="text/javascript" src="js/space-invader.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			var x = 0;
-			var y = 0;
-			function move(x, y) {
-				return Raphael.animation(
-				{
-					transform:
-						'T' + (x - s.attr("width")) + ',' + (y - s.attr("height"))
-				}, 5000 , 'easeInOut', function() {
-					(x==s.attr("width")) ? s.animate(move(paper.width, paper.height)) : s.animate(move(s.attr("width"),s.attr("height")));
-				});
-			}
-			
-			var paper = Raphael("spaceinvader", document.documentElement.clientWidth, document.documentElement.clientHeight - 5);
-			var s = paper.path(spaceinvaderPath);
-			s.attr("width", 550);
-			s.attr("height", 400);
-			//var s = paper.rect(0,0,110,80);
-			s.attr({
-				fill: "#0F0"
-				});
-				console.log(s.attr("width"));
-			s.animate(move(paper.width, paper.height));		
-		});
-	</script>
-  </head>
-	<body style="background-color: #000; margin: 0; padding: 0;">
-		<div id="spaceinvader"></div>
-	</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Electronic Basstard - Space Invaders</title>
+        <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="js/raphael-min.js"></script>
+        <script type="text/javascript" src="js/space-invader.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                function move(x, y) {
+                    console.log('T' + (x - s.attr("width")) + ',' + (y - s.attr("height")) + s.attr("transform"));
+                    return Raphael.animation({
+                        transform: 'T' + (x - s.attr("width")) + ',' + (y - s.attr("height"))
+                    }, 5000 , 'easeInOut', function() {
+                        (x==s.attr("width")) ? s.animate(move(paper.width, paper.height)) : s.animate(move(s.attr("width"),s.attr("height")));
+                    });
+                }
+
+                var paper = Raphael("spaceinvader", document.documentElement.clientWidth, document.documentElement.clientHeight - 5);
+                var s = paper.path(spaceinvaderPath).scale(.5, .5, 0, 0);
+                s.attr("width", 550 * s.attr("transform")[0][1]);
+                s.attr("height", 400 * s.attr("transform")[0][2]);
+                s.attr({
+                    fill: "#0F0"
+                });
+                console.log(s.attr());
+                s.animate(move(paper.width, paper.height));
+            });
+        </script>
+    </head>
+    <body style="background-color: #000; margin: 0; padding: 0;">
+        <div id="spaceinvader"></div>
+    </body>
 </html>
