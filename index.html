@@ -8,40 +8,57 @@
         <script type="text/javascript" src="js/space-invader.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
+				var anim3 = function() {
+				    return Raphael.animation({
+                        transform: 't200,300s1.5',
+						fill: "#F00"
+                    }, 3500 , 'easeInOut', function() {
+						this.animate(getNextAnim());
+                    });
+                }
+				
 				var anim2 = function() {
 				    return Raphael.animation({
-                        transform: 'T100,100'
-                    }, 1000 , 'easeInOut', function() {
-						s.animate(getNextAnim());
+                        transform: 't1000,500',
+						fill: "#0F0"
+                    }, 5000 , 'easeInOut', function() {
+						this.animate(getNextAnim());
                     });
                 }
 				
 				var anim1 = function() {
 					return Raphael.animation({
-						transform : 't100,100r45t-100,0'
-					}, 1000, 'bounce', function() {
-						s.animate(getNextAnim());
+						transform : 't100,100r45',
+						fill: "#00F"
+					}, 2000, 'easeInOut', function() {
+						this.animate(getNextAnim());
 					});
 				}
 
 				var anims = [
 					anim1,
-					anim2
+					anim2,
+					anim3
 				];
-				console.log(anims[0]);
 				function getNextAnim() {
-					return anims[Math.round(Math.random()) * (anims.length - 1)]();
+				console.log(Math.round(Math.random() * (anims.length - 1)));
+					anim = anims[Math.round(Math.random()) * (anims.length - 1)]();
+					console.log(anim);
+					return anim;
 				}
 				
                 var paper = Raphael("spaceinvader", document.documentElement.clientWidth, document.documentElement.clientHeight - 5);
                 var s = paper.path(spaceinvaderPath);
-                s.attr("width", 220);
-                s.attr("height", 160);
-                s.attr({
-                    fill: "#0F0"
-                });
-                //s.animate(move(paper.width, paper.height));
+                var s2 = paper.path(spaceinvaderPath);
+                var s3 = paper.path(spaceinvaderPath);
+                var s4 = paper.path(spaceinvaderPath);
+                var s5 = paper.path(spaceinvaderPath);
+
 				s.animate(getNextAnim());
+				s2.animate(getNextAnim());
+				s3.animate(getNextAnim());
+				s4.animate(getNextAnim());
+				s5.animate(getNextAnim());
             });
         </script>
     </head>
