@@ -14,13 +14,13 @@
                     var maxY             = 100;
                     var minX             = 0;
                     var minY             = 0;
-                    var numSpaceInvaders = 25;
+                    var numSpaceInvaders = 10;
 
                     anims.push(function() {
                         return Raphael.animation({
                             transform: '...t'+maxX+','+minY,
                             fill: "#F00"
-                        }, duration , 'linear', function() {
+                        }, duration , 'easeInOut', function() {
                             $(this).trigger('animationEnded');
                         });
                     });
@@ -29,7 +29,7 @@
                         return Raphael.animation({
                             transform: '...t'+minX+','+maxY,
                             fill: "#0F0"
-                        }, duration , 'linear', function() {
+                        }, duration , 'easeInOut', function() {
                             $(this).trigger('animationEnded');
                         });
                     });
@@ -38,7 +38,7 @@
                         return Raphael.animation({
                             transform : '...t-' + maxX + ',' + minY,
                             fill: "#00F"
-                        }, duration, 'linear', function() {
+                        }, duration, 'easeInOut', function() {
                             $(this).trigger('animationEnded');
                         });
                     });
@@ -47,7 +47,7 @@
                         return Raphael.animation({
                             transform : '...t'+minX+',-'+maxY,
                             fill: "#00F"
-                        }, duration, 'linear', function() {
+                        }, duration, 'easeInOut', function() {
                             $(this).trigger('animationEnded');
                         });
                     });
@@ -56,7 +56,7 @@
                         return Raphael.animation({
                             transform : '...t'+maxX+',-'+maxY,
                             fill: "#F0F0F0"
-                        }, duration, 'linear', function() {
+                        }, duration, 'easeInOut', function() {
                             $(this).trigger('animationEnded');
                         });
                     });
@@ -65,7 +65,7 @@
                         return Raphael.animation({
                             transform : '...t-'+maxX+',-'+maxY,
                             fill: "#0F0F0F"
-                        }, duration, 'linear', function() {
+                        }, duration, 'easeInOut', function() {
                             $(this).trigger('animationEnded');
                         });
                     });
@@ -74,7 +74,7 @@
                         return Raphael.animation({
                             transform : '...t'+maxX+','+maxY,
                             fill: "#F00FF0"
-                        }, duration, 'linear', function() {
+                        }, duration, 'easeInOut', function() {
                             $(this).trigger('animationEnded');
                         });
                     });
@@ -83,7 +83,7 @@
                         return Raphael.animation({
                             transform : '...t-'+maxX+','+maxY,
                             fill: "#0FF00F"
-                        }, duration, 'linear', function() {
+                        }, duration, 'easeInOut', function() {
                             $(this).trigger('animationEnded');
                         });
                     });
@@ -92,7 +92,7 @@
                         return Raphael.animation({
                             transform : '...s1.5',
                             fill: "#FFCC00"
-                        }, duration, 'linear', function() {
+                        }, duration, 'easeInOut', function() {
                             $(this).trigger('animationEnded');
                         });
                     });
@@ -101,7 +101,7 @@
                         return Raphael.animation({
                             transform : '...s0.5',
                             fill: "#FFCC00"
-                        }, duration, 'linear', function() {
+                        }, duration, 'easeInOut', function() {
                             $(this).trigger('animationEnded');
                         });
                     });
@@ -120,7 +120,7 @@
                                     $(event.target).get(0).animate(getNextAnim());
                                     }
                                 });
-                        $(s[i]).trigger('animationEnded');
+                        s[i].animate(getNextAnim().delay(500 + 100 * i));
                     }
         });
         </script>
