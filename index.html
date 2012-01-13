@@ -8,12 +8,13 @@
         <script type="text/javascript" src="js/space-invader.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
-                    var anims = [];
-                    var duration = 1000;
-                    var maxX     = 100;
-                    var maxY     = 100;
-                    var minX     = 0;
-                    var minY     = 0;
+                    var anims            = [];
+                    var duration         = 1000;
+                    var maxX             = 100;
+                    var maxY             = 100;
+                    var minX             = 0;
+                    var minY             = 0;
+                    var numSpaceInvaders = 25;
 
                     anims.push(function() {
                         return Raphael.animation({
@@ -87,13 +88,31 @@
                         });
                     });
 
+                    anims.push(function() {
+                        return Raphael.animation({
+                            transform : '...s1.5',
+                            fill: "#FFCC00"
+                        }, duration, 'linear', function() {
+                            $(this).trigger('animationEnded');
+                        });
+                    });
+
+                    anims.push(function() {
+                        return Raphael.animation({
+                            transform : '...s0.5',
+                            fill: "#FFCC00"
+                        }, duration, 'linear', function() {
+                            $(this).trigger('animationEnded');
+                        });
+                    });
+
                     function getNextAnim() {
                         return anims[Math.floor(Math.random() * anims.length)]();
                     }
 
                     var paper = Raphael("spaceinvader", document.documentElement.clientWidth, document.documentElement.clientHeight - 5);
                     var s = [];
-                    for(var i=0; i<10;i++) {
+                    for(var i=0; i<numSpaceInvaders;i++) {
                         s[i] = paper.path(spaceinvaderPath);
                         s[i].translate(paper.width / 2 - 110, paper.height / 2 - 80);
                         $(s[i]).bind({
@@ -103,7 +122,6 @@
                                 });
                         $(s[i]).trigger('animationEnded');
                     }
-                    console.log(s);
         });
         </script>
     </head>
