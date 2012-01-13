@@ -8,58 +8,95 @@
         <script type="text/javascript" src="js/space-invader.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
-				var anim3 = function() {
-				    return Raphael.animation({
-                        transform: 't200,300s1.5',
-						fill: "#F00"
-                    }, 3500 , 'easeInOut', function() {
-						this.animate(getNextAnim());
-                    });
-                }
-				
-				var anim2 = function() {
-				    return Raphael.animation({
-                        transform: 't1000,500',
-						fill: "#0F0"
-                    }, 5000 , 'easeInOut', function() {
-						this.animate(getNextAnim());
-                    });
-                }
-				
-				var anim1 = function() {
-					return Raphael.animation({
-						transform : 't100,100r45',
-						fill: "#00F"
-					}, 2000, 'easeInOut', function() {
-						this.animate(getNextAnim());
-					});
-				}
+                    var anim1 = function() {
+                        return Raphael.animation({
+                            transform: '...t100,0',
+                            fill: "#F00"
+                        }, 1000 , 'bounce', function() {
+                            $(this).trigger('animationEnded');
+                        });
+                    };
 
-				var anims = [
-					anim1,
-					anim2,
-					anim3
-				];
-				function getNextAnim() {
-				console.log(Math.round(Math.random() * (anims.length - 1)));
-					anim = anims[Math.round(Math.random()) * (anims.length - 1)]();
-					console.log(anim);
-					return anim;
-				}
-				
-                var paper = Raphael("spaceinvader", document.documentElement.clientWidth, document.documentElement.clientHeight - 5);
-                var s = paper.path(spaceinvaderPath);
-                var s2 = paper.path(spaceinvaderPath);
-                var s3 = paper.path(spaceinvaderPath);
-                var s4 = paper.path(spaceinvaderPath);
-                var s5 = paper.path(spaceinvaderPath);
+                    var anim2 = function() {
+                        return Raphael.animation({
+                            transform: '...t0,100',
+                            fill: "#0F0"
+                        }, 1000 , 'bounce', function() {
+                            $(this).trigger('animationEnded');
+                        });
+                    };
 
-				s.animate(getNextAnim());
-				s2.animate(getNextAnim());
-				s3.animate(getNextAnim());
-				s4.animate(getNextAnim());
-				s5.animate(getNextAnim());
-            });
+                    var anim3 = function() {
+                        return Raphael.animation({
+                            transform : '...t-100,0',
+                            fill: "#00F"
+                        }, 1000, 'bounce', function() {
+                            $(this).trigger('animationEnded');
+                        });
+                    };
+
+                    var anim4 = function() {
+                        return Raphael.animation({
+                            transform : '...t0,-100',
+                            fill: "#00F"
+                        }, 1000, 'bounce', function() {
+                            $(this).trigger('animationEnded');
+                        });
+                    };
+
+                    var anims = [
+                        anim1,
+                        anim2,
+                        anim3,
+                        anim4
+                    ];
+
+                    function getNextAnim() {
+                        return anims[Math.floor(Math.random() * anims.length)]();
+                    }
+
+                    var paper = Raphael("spaceinvader", document.documentElement.clientWidth, document.documentElement.clientHeight - 5);
+                    var s = paper.path(spaceinvaderPath);
+                    var s2 = paper.path(spaceinvaderPath);
+                    var s3 = paper.path(spaceinvaderPath);
+                    var s4 = paper.path(spaceinvaderPath);
+                    var s5 = paper.path(spaceinvaderPath);
+                    $(s).bind({
+                        'animationEnded' : function(event) {
+                            $(s).get(0).animate(getNextAnim().delay(500));
+                        }
+                    });
+                    $(s2).bind({
+                        'animationEnded' : function(event) {
+                            $(s2).get(0).animate(getNextAnim().delay(1000));
+                        }
+                    });
+                    $(s3).bind({
+                        'animationEnded' : function(event) {
+                            $(s3).get(0).animate(getNextAnim().delay(1500));
+                        }
+                    });
+                    $(s4).bind({
+                        'animationEnded' : function(event) {
+                            $(s4).get(0).animate(getNextAnim().delay(2000));
+                        }
+                    });
+                    $(s5).bind({
+                        'animationEnded' : function(event) {
+                            $(s5).get(0).animate(getNextAnim().delay(2500));
+                        }
+                    });
+                    s.translate(paper.width / 2, paper.height / 2);
+                    s2.translate(paper.width / 2, paper.height / 2);
+                    s3.translate(paper.width / 2, paper.height / 2);
+                    s4.translate(paper.width / 2, paper.height / 2);
+                    s5.translate(paper.width / 2, paper.height / 2);
+                    $(s).trigger('animationEnded');
+                    $(s2).trigger('animationEnded');
+                    $(s3).trigger('animationEnded');
+                    $(s4).trigger('animationEnded');
+                    $(s5).trigger('animationEnded');
+        });
         </script>
     </head>
     <body style="background-color: #000; margin: 0; padding: 0;">
