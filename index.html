@@ -9,7 +9,6 @@
         <script type="text/javascript" src="js/space-invader.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
-				var anims            = [];
 				var duration         = 200;
 				var delayAtStart	 = 500;
 				var animationTypes	 = ['linear', '<', '>', '<>', 'backIn', 'backOut', 'elastic', 'bounce'];
@@ -20,6 +19,8 @@
 				var numSpaceInvaders = 20;
 				var dieAfter		 = 10;
 				//
+				var anims            = [];
+				var svgPaths		 = []
 				var s 				 = [];
 				var playing			 = true;
 				var animationType	 = animationTypes[0];
@@ -27,6 +28,8 @@
 				$('#speed').text(-1 * ((duration-1000)/10));
 				$('#animation').text(animationType);
 				
+				svgPaths.push(spaceinvaderPath);
+				svgPaths.push(spaceinvader2Path);
 				
 				$(this).keydown(function (event){
 					if (event.keyCode === 72) {
@@ -173,7 +176,7 @@
 				}
 				
 				function createSpaceInvader(i) {
-					s[i] = paper.path(spaceinvaderPath);
+					s[i] = paper.path(svgPaths[random(svgPaths.length)]);
 					s[i].translate(paper.width / random(3) - 110, paper.height / 2 - 80);
 					$(s[i]).bind({
 							'animationEnded': 
