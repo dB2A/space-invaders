@@ -3,219 +3,220 @@
     <head>
         <meta charset="UTF-8">
         <title>Electronic Basstard - Space Invaders</title>
-		<link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/style.css">
         <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
         <script type="text/javascript" src="js/raphael-min.js"></script>
         <script type="text/javascript" src="js/space-invader.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
-				var duration         = 200;
-				var delayAtStart	 = 500;
-				var animationTypes	 = ['linear', '<', '>', '<>', 'backIn', 'backOut', 'elastic', 'bounce'];
-				var maxX             = 200;
-				var maxY             = 200;
-				var minX             = 0;
-				var minY             = 0;
-				var numSpaceInvaders = 20;
-				var dieAfter		 = 10;
-				//
-				var anims            = [];
-				var svgPaths		 = []
-				var s 				 = [];
-				var playing			 = true;
-				var animationType	 = animationTypes[0];
-				
-				$('#speed').text(-1 * ((duration-1000)/10));
-				$('#animation').text(animationType);
-				
-				svgPaths.push(spaceinvaderPath);
-				svgPaths.push(spaceinvader2Path);
-				svgPaths.push(spaceinvader3Path);
-				
-				$(this).keydown(function (event){
-					if (event.keyCode === 72) {
-						$('#toolbar').fadeToggle('slow');
-					}
-				
-					if (event.keyCode === 38 && duration > 0) {
-						duration -= 100;
-						$('#speed').text(-1 * ((duration-1000)/10));
-						return;
-					}
-					
-					if (event.keyCode === 40 && duration < 1000) {
-						duration += 100;
-						$('#speed').text(-1 * ((duration-1000)/10));
-						return;
-					}
-					
-					if (event.keyCode === 39) {
-						animationType = animationTypes.shift();
-						animationTypes.push(animationType);
-						$('#animation').text(animationType);
-						return;
-					}
-					
-					if (event.keyCode === 37) {
-						animationType = animationTypes.pop();
-						animationTypes.unshift(animationType);
-						$('#animation').text(animationType);
-						return;
-					}
-				});
+                var duration         = 500;
+                var delayAtStart     = 500;
+                var animationTypes   = ['linear', '<', '>', '<>', 'backIn', 'backOut', 'elastic', 'bounce'];
+                var maxX             = 200;
+                var maxY             = 200;
+                var minX             = 0;
+                var minY             = 0;
+                var numSpaceInvaders = 20;
+                var dieAfter         = 10;
+                //
+                var anims            = [];
+                var svgPaths         = []
+                var s                = [];
+                var playing          = true;
+                var animationType    = animationTypes[0];
+                
+                $('#speed').text(-1 * ((duration-1000)/10));
+                $('#animation').text(animationType);
+                
+                svgPaths.push(spaceinvaderPath);
+                svgPaths.push(spaceinvader2Path);
+                svgPaths.push(spaceinvader3Path);
+                
+                $(this).keydown(function (event){
+                    if (event.keyCode === 72) {
+                        $('#toolbar').fadeToggle('slow');
+                    }
+                
+                    if (event.keyCode === 38 && duration > 0) {
+                        duration -= 100;
+                        $('#speed').text(-1 * ((duration-1000)/10));
+                        return;
+                    }
+                    
+                    if (event.keyCode === 40 && duration < 1000) {
+                        duration += 100;
+                        $('#speed').text(-1 * ((duration-1000)/10));
+                        return;
+                    }
+                    
+                    if (event.keyCode === 39) {
+                        animationType = animationTypes.shift();
+                        animationTypes.push(animationType);
+                        $('#animation').text(animationType);
+                        return;
+                    }
+                    
+                    if (event.keyCode === 37) {
+                        animationType = animationTypes.pop();
+                        animationTypes.unshift(animationType);
+                        $('#animation').text(animationType);
+                        return;
+                    }
+                });
 
-				anims.push(function () {
-					return Raphael.animation({
-						transform: '...t'+maxX+','+minY,
-						fill: '#F00'
-					}, duration , animationType, function () {
-						$(this).trigger('animationEnded');
-					});
-				});
+                anims.push(function () {
+                    return Raphael.animation({
+                        transform: '...t'+maxX+','+minY,
+                        fill: '#F00'
+                    }, duration , animationType, function () {
+                        $(this).trigger('animationEnded');
+                    });
+                });
 
-				anims.push(function () {
-					return Raphael.animation({
-						transform: '...t'+minX+','+maxY,
-						fill: '#0F0'
-					}, duration , animationType, function () {
-						$(this).trigger('animationEnded');
-					});
-				});
+                anims.push(function () {
+                    return Raphael.animation({
+                        transform: '...t'+minX+','+maxY,
+                        fill: '#0F0'
+                    }, duration , animationType, function () {
+                        $(this).trigger('animationEnded');
+                    });
+                });
 
-				anims.push(function () {
-					return Raphael.animation({
-						transform : '...t-' + maxX + ',' + minY,
-						fill: '#00F'
-					}, duration, animationType, function () {
-						$(this).trigger('animationEnded');
-					});
-				});
+                anims.push(function () {
+                    return Raphael.animation({
+                        transform : '...t-' + maxX + ',' + minY,
+                        fill: '#00F'
+                    }, duration, animationType, function () {
+                        $(this).trigger('animationEnded');
+                    });
+                });
 
-				anims.push(function () {
-					return Raphael.animation({
-						transform : '...t'+minX+',-'+maxY,
-						fill: '#00F'
-					}, duration, animationType, function () {
-						$(this).trigger('animationEnded');
-					});
-				});
+                anims.push(function () {
+                    return Raphael.animation({
+                        transform : '...t'+minX+',-'+maxY,
+                        fill: '#00F'
+                    }, duration, animationType, function () {
+                        $(this).trigger('animationEnded');
+                    });
+                });
 
-				anims.push(function () {
-					return Raphael.animation({
-						transform : '...t'+maxX+',-'+maxY,
-						fill: '#F0F0F0'
-					}, duration, animationType, function () {
-						$(this).trigger('animationEnded');
-					});
-				});
+                anims.push(function () {
+                    return Raphael.animation({
+                        transform : '...t'+maxX+',-'+maxY,
+                        fill: '#F0F0F0'
+                    }, duration, animationType, function () {
+                        $(this).trigger('animationEnded');
+                    });
+                });
 
-				anims.push(function () {
-					return Raphael.animation({
-						transform : '...t-'+maxX+',-'+maxY,
-						fill: '#0F0F0F'
-					}, duration, animationType, function () {
-						$(this).trigger('animationEnded');
-					});
-				});
+                anims.push(function () {
+                    return Raphael.animation({
+                        transform : '...t-'+maxX+',-'+maxY,
+                        fill: '#0F0F0F'
+                    }, duration, animationType, function () {
+                        $(this).trigger('animationEnded');
+                    });
+                });
 
-				anims.push(function () {
-					return Raphael.animation({
-						transform : '...t'+maxX+','+maxY,
-						fill: '#F00FF0'
-					}, duration, animationType, function () {
-						$(this).trigger('animationEnded');
-					});
-				});
+                anims.push(function () {
+                    return Raphael.animation({
+                        transform : '...t'+maxX+','+maxY,
+                        fill: '#F00FF0'
+                    }, duration, animationType, function () {
+                        $(this).trigger('animationEnded');
+                    });
+                });
 
-				anims.push(function () {
-					return Raphael.animation({
-						transform : '...t-'+maxX+','+maxY,
-						fill: '#0FF00F'
-					}, duration, animationType, function () {
-						$(this).trigger('animationEnded');
-					});
-				});
+                anims.push(function () {
+                    return Raphael.animation({
+                        transform : '...t-'+maxX+','+maxY,
+                        fill: '#0FF00F'
+                    }, duration, animationType, function () {
+                        $(this).trigger('animationEnded');
+                    });
+                });
 
-				anims.push(function () {
-					return Raphael.animation({
-						transform : '...s1.5',
-						fill: '#FFCC00'
-					}, duration, animationType, function () {
-						$(this).trigger('animationEnded');
-					});
-				});
+                anims.push(function () {
+                    return Raphael.animation({
+                        transform : '...s1.5',
+                        fill: '#FFCC00'
+                    }, duration, animationType, function () {
+                        $(this).trigger('animationEnded');
+                    });
+                });
 
-				anims.push(function () {
-					return Raphael.animation({
-						transform : '...s0.5',
-						fill: '#FFCC00'
-					}, duration, animationType, function () {
-						$(this).trigger('animationEnded');
-					});
-				});
-				
-				function random(max) {
-					return Math.floor(Math.random() * max);
-				}
+                anims.push(function () {
+                    return Raphael.animation({
+                        transform : '...s0.5',
+                        fill: '#FFCC00'
+                    }, duration, animationType, function () {
+                        $(this).trigger('animationEnded');
+                    });
+                });
+                
+                function random(max) {
+                    return Math.floor(Math.random() * max);
+                }
 
-				function getNextAnim() {
-					return anims[random(anims.length)]();
-				}
+                function getNextAnim() {
+                    return anims[random(anims.length)]();
+                }
 
-				$(document).bind({
-					'SVGRemoved' : 
-					function (event, index) {
-						createSpaceInvader(i).trigger('animationStart', [random(500)]);
-					}
-				});
-				
-				var paper = Raphael('spaceinvader', document.documentElement.clientWidth, document.documentElement.clientHeight - 5);
+                $(document).bind({
+                    'SVGRemoved' : 
+                    function (event, index) {
+                        createSpaceInvader(i).trigger('animationStart', [random(500)]);
+                    }
+                });
+                
+                var paper = Raphael('spaceinvader', document.documentElement.clientWidth, document.documentElement.clientHeight - 5);
 
-				
-				for(var i=0; i<numSpaceInvaders;i++) {
-					createSpaceInvader(i).trigger('animationStart', [500 + delayAtStart * i]);
-				}
-				
-				function createSpaceInvader(i) {
-					s[i] = paper.path(svgPaths[random(svgPaths.length)]);
-					s[i].translate(paper.width / random(3) - 110, paper.height / 2 - 80);
-					$(s[i]).bind({
-							'animationEnded': 
-								function (event) {
-									var obj = $(event.target).get(0);
-									if(dieAfter <= obj.attr('transform').length) {
-										$(document).trigger('SVGRemoved', [i]);
-										obj.animate(Raphael.animation({
-											transform: '...r180',
-											fill: '#000'
-										}, duration, 'linear', function (){
-												obj.remove();
-										}
-										));
-									} else {
-										obj.animate(getNextAnim());
-									}
-								},
-							'animationStart':
-								function (event,  delay) {
-									var obj = $(event.target).get(0);
-									obj.animate(getNextAnim().delay(delay));
-								}
-							});
-					return $(s[i]);
-				}
-			});
+                
+                for(var i=0; i<numSpaceInvaders;i++) {
+                    createSpaceInvader(i).trigger('animationStart', [500 + delayAtStart * i]);
+                }
+                
+                function createSpaceInvader(i) {
+                    s[i] = paper.path(svgPaths[random(svgPaths.length)]);
+                    s[i].attr('stroke', 'none');
+                    s[i].translate(paper.width / random(3) - 110, paper.height / 2 - 80);
+                    $(s[i]).bind({
+                            'animationEnded': 
+                                function (event) {
+                                    var obj = $(event.target).get(0);
+                                    if(dieAfter <= obj.attr('transform').length) {
+                                        $(document).trigger('SVGRemoved', [i]);
+                                        obj.animate(Raphael.animation({
+                                            transform: '...r180',
+                                            fill: '#000'
+                                        }, duration, 'linear', function (){
+                                                obj.remove();
+                                        }
+                                        ));
+                                    } else {
+                                        obj.animate(getNextAnim());
+                                    }
+                                },
+                            'animationStart':
+                                function (event,  delay) {
+                                    var obj = $(event.target).get(0);
+                                    obj.animate(getNextAnim().delay(delay));
+                                }
+                            });
+                    return $(s[i]);
+                }
+            });
         </script>
     </head>
     <body>
         <div id="spaceinvader"></div>
-		<div id="toolbar">
-			<ul>
-				<li>Speed: <span id="speed"></span>%</li>
-				<li>Animation: <span id="animation"></span></li>
-				<li id="help">[<b>h</b> toggle this toolbar | <b>&darr;</b> decrease speed | <b>&uarr;</b> increase speed | <b>&larr;&rarr;</b> switch animation]</li>
-				<li>Fork me on <a href="https://github.com/dB2A/space-invaders">Github</a></li>
-			</ul>
-		</div>
+        <div id="toolbar">
+            <ul>
+                <li>Speed: <span id="speed"></span>%</li>
+                <li>Animation: <span id="animation"></span></li>
+                <li id="help">[<b>h</b> toggle this toolbar | <b>&darr;</b> decrease speed | <b>&uarr;</b> increase speed | <b>&larr;&rarr;</b> switch animation]</li>
+                <li>Fork me on <a href="https://github.com/dB2A/space-invaders">Github</a></li>
+            </ul>
+        </div>
     </body>
 </html>
