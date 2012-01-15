@@ -64,91 +64,101 @@
                     }
                 });
 
+                //east
                 anims.push(function () {
                     return Raphael.animation({
                         transform: '...t'+maxX+','+minY,
-                        fill: '#F00'
+                        fill: '#FF0000'
                     }, duration , animationType, function () {
                         $(this).trigger('animationEnded');
                     });
                 });
 
+                //south
                 anims.push(function () {
                     return Raphael.animation({
                         transform: '...t'+minX+','+maxY,
-                        fill: '#0F0'
+                        fill: '#7FFF00'
                     }, duration , animationType, function () {
                         $(this).trigger('animationEnded');
                     });
                 });
 
+                //west
                 anims.push(function () {
                     return Raphael.animation({
                         transform : '...t-' + maxX + ',' + minY,
-                        fill: '#00F'
+                        fill: '#00FFFF'
                     }, duration, animationType, function () {
                         $(this).trigger('animationEnded');
                     });
                 });
 
+                //nort
                 anims.push(function () {
                     return Raphael.animation({
                         transform : '...t'+minX+',-'+maxY,
-                        fill: '#00F'
+                        fill: '#7F00FF'
                     }, duration, animationType, function () {
                         $(this).trigger('animationEnded');
                     });
                 });
 
+                //north-east
                 anims.push(function () {
                     return Raphael.animation({
                         transform : '...t'+maxX+',-'+maxY,
-                        fill: '#F0F0F0'
+                        fill: '#FF00BF'
                     }, duration, animationType, function () {
                         $(this).trigger('animationEnded');
                     });
                 });
 
+                //north-west
                 anims.push(function () {
                     return Raphael.animation({
                         transform : '...t-'+maxX+',-'+maxY,
-                        fill: '#0F0F0F'
+                        fill: '#003FFF'
                     }, duration, animationType, function () {
                         $(this).trigger('animationEnded');
                     });
                 });
 
+                //south-east
                 anims.push(function () {
                     return Raphael.animation({
                         transform : '...t'+maxX+','+maxY,
-                        fill: '#F00FF0'
+                        fill: '#FFBF00'
                     }, duration, animationType, function () {
                         $(this).trigger('animationEnded');
                     });
                 });
 
+                //south-west
                 anims.push(function () {
                     return Raphael.animation({
                         transform : '...t-'+maxX+','+maxY,
-                        fill: '#0FF00F'
+                        fill: '#00FF3F'
                     }, duration, animationType, function () {
                         $(this).trigger('animationEnded');
                     });
                 });
 
+                //bigger
                 anims.push(function () {
                     return Raphael.animation({
                         transform : '...s1.5',
-                        fill: '#FFCC00'
+                        fill: '#FFFFFF'
                     }, duration, animationType, function () {
                         $(this).trigger('animationEnded');
                     });
                 });
 
+                //smaller
                 anims.push(function () {
                     return Raphael.animation({
                         transform : '...s0.5',
-                        fill: '#FFCC00'
+                        fill: '#FFFFFF'
                     }, duration, animationType, function () {
                         $(this).trigger('animationEnded');
                     });
