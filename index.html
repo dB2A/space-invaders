@@ -12,10 +12,14 @@
 			
 			function moveIt(evt) {
 				var elem = evt.target;
-				elem.style.transition = 'all 3s ease-out';
-				elem.style.transform = 'translateX(600px)';
-				console.log(elem.style);
 				
+				elem.style.setProperty('-webkit-transition', 'all 3s ease-out');
+				elem.style.setProperty('-moz-transition',    'all 3s ease-out');
+				elem.style.setProperty('transition',         'all 3s ease-out');
+					
+				elem.style.setProperty('-webkit-transform', 'translateX(600px)');
+				elem.style.setProperty('-moz-transform',    'translateX(600px)');
+				elem.style.setProperty('transform',         'translateX(600px)');				
 			}
         </script>
     </head>

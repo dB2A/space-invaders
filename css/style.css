@@ -46,8 +46,17 @@ a:hover {
  * Animations
  */
 
- 
+#s1:click {
+	-webkit-transform:   translate(600px,500px);
+	-moz-transform:      translate(600px,500px);
+	transform:           translate(600px,500px);
+}
+
 #s1 {
+	-webkit-transition:  all .3s ease-in-out;
+	-moz-transition:     all .3s ease-in-out;
+	-o-transition:       all .3s ease-in-out;
+	transition:          all .3s ease-in-out;
 	background-color:    #000;
 	width:               20px;
 	height:              20px;
