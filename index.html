@@ -6,65 +6,29 @@
         <link rel="stylesheet" href="css/style.css">
         <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
         <script type="text/javascript">
-            $(document).ready(function () {
-                document.querySelector('#s1').addEventListener('click', moveIt, false);
-                document.querySelector('#s2').addEventListener('click', moveIt, false);
+            $(document).ready(function(event){
+                $('#spaceinvader').attr({
+                    'width':  document.documentElement.clientWidth,
+                    'height': document.documentElement.clientHeight
+                });
+
+                $('#info').text($('#spaceinvader').attr('width'));
             });
-
-            function moveIt(evt) {
-                var elem = evt.target;
-
-                elem.style.setProperty('-webkit-transition', 'all 3s ease-in-out');
-                elem.style.setProperty('-moz-transition',    'all 3s ease-in-out');
-                elem.style.setProperty('transition',         'all 3s ease-in-out');
-
-                elem.style.setProperty('-webkit-transform', 'translate(600px,500px)');
-                elem.style.setProperty('-moz-transform',    'translate(600px,500px)');
-                elem.style.setProperty('transform',         'translate(600px,500px)');				
-            }
         </script>
     </head>
     <body>
-        <div id="spaceinvader">
-            <div id="s1">
-                <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-                    <g>
-                    <polygon points="0,20 0,100 20,100 20,100 20,120 40,120 40,140 20,140 20,160
-                    40,160 40,140 60,140 60,120 160,120 160,140 180,140 180,160 200,160 200,140
-                    180,140 180,120 200,120 200,100 220,100 220,20 200,20 200,60 180,60 180,40
-                    160,40 160,20 180,20 180,0 160,0 160,20 140,20 140,40 80,40 80,20 60,20 60,0
-                    40,0 40,20 60,20 60,40 40,40 40,60 20,60 20,20" fill="red"/>
-                    <polygon points="60,60 80,60 80,80 60,80" fill="white"/>                    
-                    <polygon points="140,60 160,60 160,80 140,80" fill="white"/>
-                    </g>
-                </svg>
-            </div>
-            <div id="s2">
-                <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-                    <g>
-                    <polygon points="0,20 0,100 20,100 20,100 20,120 40,120 40,140 20,140 20,160
-                    40,160 40,140 60,140 60,120 160,120 160,140 180,140 180,160 200,160 200,140
-                    180,140 180,120 200,120 200,100 220,100 220,20 200,20 200,60 180,60 180,40
-                    160,40 160,20 180,20 180,0 160,0 160,20 140,20 140,40 80,40 80,20 60,20 60,0
-                    40,0 40,20 60,20 60,40 40,40 40,60 20,60 20,20" fill="blue"/>
-                    <polygon points="60,60 80,60 80,80 60,80" fill="white"/>                    
-                    <polygon points="140,60 160,60 160,80 140,80" fill="white"/>
-                    </g>
-                </svg>
-            </div>
-        </div>
-        <div id="toolbar">
-            <ul>
-                <li>Speed: <span id="speed"></span>%</li>
-                <li>Animation: <span id="animation"></span></li>
-                <li id="help">
-                    [<b>h</b> toggle this toolbar | 
-                    <b>&darr;</b> decrease speed | 
-                    <b>&uarr;</b> increase speed |
-                    <b>&larr;&rarr;</b> switch animation]
-                </li>
-                <li>Fork me on <a href="https://github.com/dB2A/space-invaders">Github</a></li>
-            </ul>
-        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="spaceinvader">
+            <g>
+                <polygon points="0,20 0,100 20,100 20,100 20,120 40,120 40,140 20,140 20,160
+                40,160 40,140 60,140 60,120 160,120 160,140 180,140 180,160 200,160 200,140
+                180,140 180,120 200,120 200,100 220,100 220,20 200,20 200,60 180,60 180,40
+                160,40 160,20 180,20 180,0 160,0 160,20 140,20 140,40 80,40 80,20 60,20 60,0
+                40,0 40,20 60,20 60,40 40,40 40,60 20,60 20,20" style="fill:red; fill-rule:evenodd" transform="rotation" />
+                <polygon points="60,60 80,60 80,80 60,80" fill="white"/>
+                <polygon points="140,60 160,60 160,80 140,80" fill="white"/>
+                <animatemotion path="M 50,50 H 1000 Z" dur="10000ms" repeatCount="indefinite"/>
+                <animateTransform attributeName="transform" begin="0s" dur="5s" type="rotate" from="0 60 60" to="360 100 60" repeatCount="indefinite"/>
+            </g>
+        </svg>
     </body>
 </html>
