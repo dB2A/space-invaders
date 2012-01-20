@@ -1,12 +1,12 @@
 @font-face {
-    font-family: 'BebasRegular';
-    src: url('BEBAS___-webfont.eot');
-    src: url('BEBAS___-webfont.eot?#iefix') format('embedded-opentype'),
-         url('BEBAS___-webfont.woff') format('woff'),
-         url('BEBAS___-webfont.ttf') format('truetype'),
-         url('BEBAS___-webfont.svg#BebasRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
+    font-family:         'BebasRegular';
+    src:                 url('BEBAS___-webfont.eot');
+    src:                 url('BEBAS___-webfont.eot?#iefix') format('embedded-opentype'),
+                         url('BEBAS___-webfont.woff') format('woff'),
+                         url('BEBAS___-webfont.ttf') format('truetype'),
+                         url('BEBAS___-webfont.svg#BebasRegular') format('svg');
+    font-weight:         normal;
+    font-style:          normal;
 }
 
 body {
@@ -46,14 +46,34 @@ a:hover {
     background-image:    -moz-linear-gradient(19% 75% 90deg,#666, #333);
 }
 
+#toolbar ul {
+    padding: 0;
+}
+
 #toolbar ul li{
     display:             inline;
     padding:             0 20px;
     color:               #FFF;
+    -webkit-text-shadow: 1px 1px 0px #000;
+    -moz-text-shadow:    1px 1px 0px #000;
     text-shadow:         1px 1px 0px #000;
 }
 
 #toolbar .title {
-    font: normal 20px 'BebasRegular', sans-serif;
-    padding: 0;
+    position:            relative;
+    float:               left;
+    bottom:              10px;
+    font:                normal 20px 'BebasRegular', sans-serif;
+    -webkit-text-shadow: 0px 0px 5px #000;
+    -moz-text-shadow:    0px 0px 5px #000;
+    text-shadow:         0px 0px 5px #000;
+}
+
+.highlight {
+    font-size:           24px;
+    color:               #FFCC00;
+}
+
+.push-right {
+    float:               right;
 }
