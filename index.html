@@ -29,6 +29,7 @@
 
                 $('#speed').text(-1 * ((duration-1000)/10));
                 $('#animation').text(animationType);
+                $('#randomTimer').text(randomTimeOut / 1000 + 's');
 
                 svgPaths.push(spaceinvaderPath);
                 svgPaths.push(spaceinvader2Path);
@@ -39,32 +40,51 @@
                         $('#toolbar').fadeToggle('slow');
                     }
 
-                    if (event.keyCode === 38 && duration > 0 && !modeAuto) {
+                    //arrow up
+                    if (event.keyCode === 38 && duration > 0 && false === modeAuto) {
                         (duration - 100 < 0)?duration = 0:duration -= 100;
                         $('#speed').text(-1 * ((duration-1000)/10));
                         return;
                     }
 
-                    if (event.keyCode === 40 && duration < 1000 && !modeAuto) {
+                    //arrow down
+                    if (event.keyCode === 40 && duration < 1000 && false === modeAuto) {
                         (duration + 100 > 1000)?duration = 1000:duration += 100;
                         $('#speed').text(-1 * ((duration-1000)/10));
                         return;
                     }
 
-                    if (event.keyCode === 39 && !modeAuto) {
+                    //+
+                    if (event.keyCode === 107 && false === modeAuto) {
+                        randomTimeOut += 1000;
+                        $('#randomTimer').text(randomTimeOut/1000 + "s");
+                        return;
+                    }
+
+                    //-
+                    if (event.keyCode === 109 && false === modeAuto) {
+                        (randomTimeOut - 1000 < 1000)?randomTimeOut = 1000:randomTimeOut -= 1000;
+                        $('#randomTimer').text(randomTimeOut/1000 + "s");
+                        return;
+                    }
+
+                    //arrow right
+                    if (event.keyCode === 39 && false === modeAuto) {
                         animationType = animationTypes.shift();
                         animationTypes.push(animationType);
                         $('#animation').text(animationType);
                         return;
                     }
 
-                    if (event.keyCode === 37 && !modeAuto) {
+                    //arrow left
+                    if (event.keyCode === 37 && false === modeAuto) {
                         animationType = animationTypes.pop();
                         animationTypes.unshift(animationType);
                         $('#animation').text(animationType);
                         return;
                     }
 
+                    //a
                     if(event.keyCode === 65) {
                         if (true === modeAuto) {
                             modeAuto = false;
@@ -75,7 +95,7 @@
                             modeAuto  = true;
                             $('#auto').text('ON');
                             $('#toolbar').toggleClass('auto');
-                            timer     = setInterval(function(){
+                            timer = setInterval(function() {
                                 animationType = animationTypes[random(animationTypes.length)];
                                 duration      = random(1000);
                                 $('#speed').text(-1 * ((duration-1000)/10));
@@ -245,9 +265,10 @@
         <div id="toolbar">
             <ul>
                 <li>Auto: <span id="auto">OFF</span></li>
+                <li>Random Timer: <span id="randomTimer"></span></li>
                 <li>Speed: <span id="speed"></span>%</li>
                 <li>Animation: <span id="animation"></span></li>
-                <li id="help">[<b>a</b> toggle auto mode | <b>h</b> toggle this toolbar | <b>&darr;</b> decrease speed | <b>&uarr;</b> increase speed | <b>&larr;&rarr;</b> switch animation]</li>
+                <li id="help">[<b>a</b> toggle auto mode | <b>+&nbsp;-</b> increase/decrease auto timer change | <b>h</b> toggle this toolbar | <b>&darr;</b> decrease speed | <b>&uarr;</b> increase speed | <b>&larr;&rarr;</b> switch animation]</li>
                 <li>Fork me on <a href="https://github.com/dB2A/space-invaders">Github</a></li>
             </ul>
         </div>
