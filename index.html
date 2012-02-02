@@ -8,6 +8,7 @@
         <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
         <script type="text/javascript" src="js/raphael-min.js"></script>
         <script type="text/javascript" src="js/space-invader.js"></script>
+        <script type="text/javascript" src="js/rgbcolor.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
                 var duration         = 500;
@@ -27,6 +28,7 @@
                 var modeAuto         = false;
                 var timer            = null;
                 var randomTimeOut    = 10000;
+                var inversedColor    = new RGBColor('#FFFFFF').toRGB();
 
                 $('#speed').text(-1 * ((duration-1000)/10));
                 $('#animation').text(animationType);
@@ -116,9 +118,12 @@
 
                         //shift + /
                         case 191:
-                        var bgColor = window.prompt('new background color', '#000000');
-                        if (null !== bgColor) {
-                            $('body').css('background-color', bgColor);
+                        var newColor = window.prompt('New background color', '#000000');
+                        newColor = new RGBColor(newColor);
+                        if (true === newColor.ok) {
+                            $('body').css('background-color', newColor.toRGB());
+                            inversedColor = 'rgb(' + (255 - newColor.r) + ',' + (255 - newColor.g) + ',' + (255 - newColor.b) + ')';
+                                    console.log(inversedColor);
                         }
                         break;
                     }
@@ -208,7 +213,7 @@
                 anims.push(function () {
                     return Raphael.animation({
                         transform : '...s1.5',
-                        fill: '#FFFFFF'
+                        fill: inversedColor
                     }, duration, animationType, function () {
                         $(this).trigger('animationEnded');
                     });
@@ -218,7 +223,7 @@
                 anims.push(function () {
                     return Raphael.animation({
                         transform : '...s0.5',
-                        fill: '#FFFFFF'
+                        fill: inversedColor
                     }, duration, animationType, function () {
                         $(this).trigger('animationEnded');
                     });
