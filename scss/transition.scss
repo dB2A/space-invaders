@@ -1,0 +1,64 @@
+$translation:  500px;
+
+$north:        #7f00ff;
+$northEast:    #ff00bf;
+$east:         #ff0000;
+$southEast:    #ffbf00;
+$south:        #7fff00;
+$southWest:    #00ff3f;
+$west:         #00ffff;
+$northWest:    #003fff;
+
+@mixin translate($x, $y) {
+    -moz-transform:     translate($x, $y);
+    -webkit-transform:  translate($x, $y);
+    -o-transform:       translate($x, $y);
+    -ms-transform:      translate($x, $y);
+    transform:          translate($x, $y);
+}
+
+.invader, .block {
+    -moz-transition-property:            all;
+    -webkit-transition-property:         all;
+    -o-transition-property:              all;
+    -moz-transition-duration:            1s;
+    -webkit-transition-duration:         1s;
+    -o-transition-duration:              1s;
+    -moz-transition-timing-function:     linear;
+    -webkit-transition-timing-function:  linear;
+    -o-transition-timing-function:       linear;
+}
+
+.invader.north {
+    @include translate(0, -$translation);
+    .block {
+        background-color: $north;
+    }
+}
+.invader.northEast .block {
+    background-color: $northEast;
+}
+.invader.east {
+    @include translate($translation, 0);
+    .block {
+        background-color: $east;
+    }
+}
+.invader.southEast .block {
+    background-color: $southEast;
+}
+.invader.south .block {
+    background-color: $south;
+}
+.invader.southWest .block {
+    background-color: $southWest;
+}
+.invader.west {
+    @include translate(0, 0);
+    .block {
+        background-color: $west;
+    }
+}
+.invader.northWest .block {
+    background-color: $northWest;
+}

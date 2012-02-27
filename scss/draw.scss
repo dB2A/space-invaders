@@ -1,0 +1,55 @@
+$block: 50px;
+
+.invader {
+    .block {
+        position: absolute;
+        width: $block;
+        height: $block;
+    }
+    .block:nth-child(1)  { top: 0 * $block; left: 2  * $block; }
+    .block:nth-child(2)  { top: 0 * $block; left: 8  * $block; }
+    .block:nth-child(3)  { top: 1 * $block; left: 3  * $block; }
+    .block:nth-child(4)  { top: 1 * $block; left: 7  * $block; }
+    .block:nth-child(5)  { top: 2 * $block; left: 2  * $block; }
+    .block:nth-child(6)  { top: 2 * $block; left: 3  * $block; }
+    .block:nth-child(7)  { top: 2 * $block; left: 4  * $block; }
+    .block:nth-child(8)  { top: 2 * $block; left: 5  * $block; }
+    .block:nth-child(9)  { top: 2 * $block; left: 6  * $block; }
+    .block:nth-child(10) { top: 2 * $block; left: 7  * $block; }
+    .block:nth-child(11) { top: 2 * $block; left: 8  * $block; }
+    .block:nth-child(12) { top: 3 * $block; left: 1  * $block; }
+    .block:nth-child(13) { top: 3 * $block; left: 2  * $block; }
+    .block:nth-child(14) { top: 3 * $block; left: 4  * $block; }
+    .block:nth-child(15) { top: 3 * $block; left: 5  * $block; }
+    .block:nth-child(16) { top: 3 * $block; left: 6  * $block; }
+    .block:nth-child(17) { top: 3 * $block; left: 8  * $block; }
+    .block:nth-child(18) { top: 3 * $block; left: 9  * $block; }
+    .block:nth-child(19) { top: 4 * $block; left: 0  * $block; }
+    .block:nth-child(20) { top: 4 * $block; left: 1  * $block; }
+    .block:nth-child(21) { top: 4 * $block; left: 2  * $block; }
+    .block:nth-child(22) { top: 4 * $block; left: 3  * $block; }
+    .block:nth-child(23) { top: 4 * $block; left: 4  * $block; }
+    .block:nth-child(24) { top: 4 * $block; left: 5  * $block; }
+    .block:nth-child(25) { top: 4 * $block; left: 6  * $block; }
+    .block:nth-child(26) { top: 4 * $block; left: 7  * $block; }
+    .block:nth-child(27) { top: 4 * $block; left: 8  * $block; }
+    .block:nth-child(28) { top: 4 * $block; left: 9  * $block; }
+    .block:nth-child(29) { top: 4 * $block; left: 10 * $block; }
+    .block:nth-child(30) { top: 5 * $block; left: 0  * $block; }
+    .block:nth-child(31) { top: 5 * $block; left: 2  * $block; }
+    .block:nth-child(32) { top: 5 * $block; left: 3  * $block; }
+    .block:nth-child(33) { top: 5 * $block; left: 4  * $block; }
+    .block:nth-child(34) { top: 5 * $block; left: 5  * $block; }
+    .block:nth-child(35) { top: 5 * $block; left: 6  * $block; }
+    .block:nth-child(36) { top: 5 * $block; left: 7  * $block; }
+    .block:nth-child(37) { top: 5 * $block; left: 8  * $block; }
+    .block:nth-child(38) { top: 5 * $block; left: 10 * $block; }
+    .block:nth-child(39) { top: 6 * $block; left: 0  * $block; }
+    .block:nth-child(40) { top: 6 * $block; left: 2  * $block; }
+    .block:nth-child(41) { top: 6 * $block; left: 8  * $block; }
+    .block:nth-child(42) { top: 6 * $block; left: 10 * $block; }
+    .block:nth-child(43) { top: 7 * $block; left: 3  * $block; }
+    .block:nth-child(44) { top: 7 * $block; left: 4  * $block; }
+    .block:nth-child(45) { top: 7 * $block; left: 6  * $block; }
+    .block:nth-child(46) { top: 7 * $block; left: 7  * $block; }
+}
